@@ -3,6 +3,7 @@ const mongoose = require('mongoose');
 const cors = require('cors');
 require('dotenv').config();
 const Listing = require('./models/Listing');
+const { upload } = require('./cloudinary');
 
 const app = express();
 
@@ -56,6 +57,15 @@ app.post('/api/listings', async (req, res) => {
     res.status(201).json(listing);
   } catch (err) {
     res.status(400).json({ message: err.message });
+  }
+});
+// Image upload route
+app.post('/api/upload', upload.array('images', 4), (req, res) => {
+  try {
+    const urls = req.files.map(file => file.path);
+    res.json({ urls });
+  } catch (err) {
+    res.status(500).json({ message: 'Upload failed' });
   }
 });
 

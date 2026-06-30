@@ -23,7 +23,7 @@ const listingSchema = new mongoose.Schema({
   },
   fuel: {
     type: String,
-    enum: ['Petrol', 'Diesel', 'Hybrid', 'Electric', 'CNG'],
+    enum: ['Petrol', 'Diesel', 'Hybrid', 'Electric', 'CNG', 'Octane'],
     required: true,
   },
   condition: {
@@ -33,7 +33,7 @@ const listingSchema = new mongoose.Schema({
   },
   category: {
     type: String,
-    enum: ['Car', 'Motorcycle', 'Truck', 'Bus', 'Commercial', 'Spare Parts'],
+    enum: ['Car', 'Motorcycle', 'Truck', 'Bus', 'Commercial Vehicle', 'Spare Parts'],
     required: true,
   },
   location: {
